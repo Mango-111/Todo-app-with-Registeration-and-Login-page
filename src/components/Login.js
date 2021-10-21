@@ -14,6 +14,7 @@ function Login() {
         if(Email_login == Email && Password_login == Password)
         {
             alert("logged in successfully");
+            window.location.href="./Entry";
         }
         else{
             alert("please enter valid data");
@@ -39,7 +40,7 @@ function Login() {
                                                 <Form.Label className="form_label_1 mt-3"><i class="fas fa-lock"></i> Password:</Form.Label>
                                                 <Form.Control placeholder="Password" type="Password" onChange={(e)=>setPass_login(e.target.value) }/>
                                             </Card.Text>
-                                            <Button variant="primary" type="submit" className="mt-3" href="./Entry">Login</Button>
+                                            <Button variant="primary" type="submit" className="mt-3">Login</Button>
                                         </Card.Body>
                                     </Card>
                                     </Form>

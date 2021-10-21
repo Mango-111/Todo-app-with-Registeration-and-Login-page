@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
-import { Form, Button, Container, Row, Col, Card } from 'react-bootstrap'
-import { Link, Redirect } from 'react-router-dom';
-import Login from './Login'
+import { Form, Button, Row, Col, Card } from 'react-bootstrap'
 import './Register.css'
 
 function Registeration() {
@@ -34,15 +32,16 @@ function Registeration() {
     }
 
     const handleClick = (e) => {
-        let logged = "";
-        e.preventDefault();
-        if (Fname != " " && Lname !== " " && Uname !== " " && Email !== " " && Email !== " " && Pass !== " " && Conpass !== " ") {
-            setLogin(login);
+        // e.preventDefault();
+        if (Fname !== " " && Lname !== " " && Uname !== " " && Email !== " " && Email !== " " && Pass !== " " && Conpass !== " ") {
+            setLogin(!login);
+            console.log(setLogin);
             // logged = true;
-            //  return <Redirect to="./Login"/>
+        //    <Redirect to="C:\Users\Neosoft\Documents\React JS\todo_login\todo\src\components\Login.js"/>
+          window.location.href="./Login"
         }
         else {
-            setLogin(!login)
+            setLogin(login)
             alert("Please fill all the fields")
         }
     }
@@ -76,10 +75,11 @@ function Registeration() {
                                         <Form.Label className="label_2"> <i class="fas fa-lock"></i> Confirm Password:</Form.Label>
                                         <Form.Control placeholder="Password" type="Password" onChange={(e) => setConPass(e.target.value)} />
 
-                                        <Button href="./Login" variant="primary" type="submit" className="mt-3" onClick={handleClick}>
+                                        <Button variant="primary" type="submit" className="mt-3" onClick={handleClick}>
                                             Submit
                                         </Button>
                                     </Card.Text>
+                                    <a href="./Login">already have an account?Login</a>
                                 </Card.Body>
                             </Card>
                         </Form>
