@@ -5,22 +5,14 @@ function Entry() {
     const [inputData, setInput] = useState();
     const [items, setItems] = useState([]);
     const [Priority, setPriority] = useState();
-    const [priorities, setPrior] = useState([]);
 
     // To add items
     const addItem = () => {
         if (!inputData) {
 
         } else {
-            setItems([...items, inputData]);
+            setItems([...items, {taskName:inputData, priority:Priority, done:false}]);
             setInput('');
-        }
-    }
-
-    const addPriority = () => {
-        if (!Priority) {
-        } else {
-            setPrior([...priorities, Priority]);
             setPriority('');
         }
     }
@@ -31,6 +23,14 @@ function Entry() {
         });
         setItems(updateItem);
     }
+    const taskDone =(ind1)=>{
+    console.log("not working");
+    // console.log(ind1);
+    // const arr= [...items];
+    // console.log(arr);
+    // arr[ind1].done =true;
+    // setItems(arr);
+     }
     return (
         <div >
             <div>
@@ -47,12 +47,11 @@ function Entry() {
                                                 <Form.Label className="label1">Enter the task:</Form.Label>
                                                 <Form.Control placeholder="New Task" type="text" value={inputData} onChange={(e) => setInput(e.target.value)} />
                                                  
-                                                <Button variant="primary" type="submit" className="mt-3 mb-3" onClick={addItem}>Add Task</Button>
 
                                                 <Form.Label className="label2"> Priority:</Form.Label>
                                                 <Form.Control placeholder="Priority" type="number" value={Priority} onChange={(e) => setPriority(e.target.value)} />
                                             </Card.Text>
-                                            <Button variant="primary" type="submit" className="mt-3" onClick={addPriority}>Add Priority</Button>
+                                            <Button variant="primary" type="submit" className="mt-3 mb-3" onClick={addItem}>Add Task</Button>
                                         </Card.Body>
                                     </Card>
                                 </Col>
@@ -71,14 +70,16 @@ function Entry() {
                                                             <th>Task Name</th>
                                                             <th>Task done</th>
                                                             <th>Delete Task</th>
+                                                            <th>Priority</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         <tr>
                                                             <td>1</td>
-                                                            <td>{elem}</td>
-                                                            <td><i class="fas fa-check-square"></i></td>
+                                                            <td style={ {textDecorationLine:"line-through"}}>{elem.taskName}</td>
+                                                            <td><i class="fas fa-check-square" onClick={(e) => taskDone(ind)}></i></td>
                                                             <td><i class="fas fa-times-circle" onClick={(e) => deleteItem(ind)}></i></td>
+                                                            <td>{elem.priority}</td>
                                                         </tr>
                                                     </tbody>
                                                 </Table>
@@ -86,32 +87,6 @@ function Entry() {
                                     })
                                 }
                             </div>
-                            <div>
-                                <Row>
-                                    <Col md={3}>
-                                {
-                                    priorities.map((prio, ind1) => {
-                                        return (
-                                            <div key={ind1}>
-                                                <Table striped bordered hover>
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Priority</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>{prio}</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </Table>
-                                            </div>
-                                        )
-                                        })
-                                    }
-                                    </Col>
-                                    </Row>
-                                 </div>
                         </Container>
                     </div>
                 </Container>

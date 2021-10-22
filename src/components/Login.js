@@ -7,19 +7,21 @@ function Login() {
 
     const handleLogin=(e)=>{
         e.preventDefault();
-        let Email = localStorage.getItem("Email");
-        let Password =localStorage.getItem("Password");
-        Email =JSON.parse(Email);
-        Password =JSON.parse(Password);
-        if(Email_login == Email && Password_login == Password)
-        {
-            alert("logged in successfully");
-            window.location.href="./Entry";
-        }
-        else{
-            alert("please enter valid data");
-        }
+        let flag1=false;
+        const myArray =JSON.parse(localStorage.getItem('Data'));
+        myArray.map((elem)=>{
+            if( elem.Email == Email_login && elem.Password == Password_login)
+            {
+                flag1=true;
+                // alert("logged in successfully");
+            }
+    });
+    if(flag1 == true)
+    {
+        alert("form submitted successfully");
+        window.location.href="./Entry";
     }
+}
     return (
         <div>
             <div>

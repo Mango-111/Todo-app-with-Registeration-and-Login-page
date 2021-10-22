@@ -20,13 +20,22 @@ function Registeration() {
             setFlag(true);
         }
         else {
-            setFlag(false);
-            localStorage.setItem("Email", JSON.stringify(Email));
-            localStorage.setItem("Password", JSON.stringify(Pass));
-            localStorage.setItem("Username", JSON.stringify(Uname));
-            console.log("Saved in Local Storage");
+        setFlag(false);
+        let formData = {
+            Email: Email,
+            Password:Pass,
+        }
+        let formArr = [ ];
+        let data = localStorage.getItem('Data')
+        data = JSON.parse(data);
+        console.log("Data",data);
+        if(data!==null){
+        formArr =[...data];}
 
-            setLogin(!login)
+        formArr.push(formData);
+        let loginData = localStorage.setItem("Data",JSON.stringify(formArr));
+        console.log("Data",loginData);
+        setLogin(!login)
         }
 
     }
@@ -36,9 +45,7 @@ function Registeration() {
         if (Fname !== " " && Lname !== " " && Uname !== " " && Email !== " " && Email !== " " && Pass !== " " && Conpass !== " ") {
             setLogin(!login);
             console.log(setLogin);
-            // logged = true;
-        //    <Redirect to="C:\Users\Neosoft\Documents\React JS\todo_login\todo\src\components\Login.js"/>
-          window.location.href="./Login"
+           window.location.href="./Login"
         }
         else {
             setLogin(login)
