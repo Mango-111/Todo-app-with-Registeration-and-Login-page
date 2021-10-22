@@ -4,7 +4,7 @@ import './Entry.css'
 function Entry() {
     const [inputData, setInput] = useState();
     const [items, setItems] = useState([]);
-    const [Priority, setPriority] = useState();
+    const [Priority, setPriority] = useState([1,5]);
 
     // To add items
     const addItem = () => {
@@ -23,14 +23,7 @@ function Entry() {
         });
         setItems(updateItem);
     }
-    const taskDone =(ind1)=>{
-    console.log("not working");
-    // console.log(ind1);
-    // const arr= [...items];
-    // console.log(arr);
-    // arr[ind1].done =true;
-    // setItems(arr);
-     }
+    
     return (
         <div >
             <div>
@@ -49,7 +42,7 @@ function Entry() {
                                                  
 
                                                 <Form.Label className="label2"> Priority:</Form.Label>
-                                                <Form.Control placeholder="Priority" type="number" value={Priority} onChange={(e) => setPriority(e.target.value)} />
+                                                <input  placeholder="Priority" type="range" min="1" max="5" defaultValue="3" value={Priority} onChange={(e) => setPriority(e.target.value)} />
                                             </Card.Text>
                                             <Button variant="primary" type="submit" className="mt-3 mb-3" onClick={addItem}>Add Task</Button>
                                         </Card.Body>
@@ -75,9 +68,9 @@ function Entry() {
                                                     </thead>
                                                     <tbody>
                                                         <tr>
-                                                            <td>1</td>
-                                                            <td style={ {textDecorationLine:"line-through"}}>{elem.taskName}</td>
-                                                            <td><i class="fas fa-check-square" onClick={(e) => taskDone(ind)}></i></td>
+                                                            <td>{ind+1}</td>
+                                                            <td>{elem.taskName}</td>
+                                                            <td><i class="fas fa-check-square"></i></td>
                                                             <td><i class="fas fa-times-circle" onClick={(e) => deleteItem(ind)}></i></td>
                                                             <td>{elem.priority}</td>
                                                         </tr>
