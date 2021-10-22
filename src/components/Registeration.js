@@ -1,6 +1,12 @@
 import React, { useState } from 'react'
 import { Form, Button, Row, Col, Card } from 'react-bootstrap'
 import './Register.css'
+/**
+ * 
+ * @author Ambika Hadapad
+ * @description Used useState hook to hold the states for the different data entered by user.
+ * @returns useState hook returns array of two entries.
+ */
 
 function Registeration() {
     const [Fname, setUser] = useState(" ");
@@ -12,6 +18,14 @@ function Registeration() {
 
     const [flag, setFlag] = useState(false);
     const [login, setLogin] = useState(true);
+
+/**
+ * 
+ * @author Ambika Hadapad
+ * @description declared a function which will check the data entered by user and will store the new users data into 
+ * local storage.
+ * @returns returns boolean value.
+ */
 
     const handleForm = (e) => {
         e.preventDefault();
@@ -39,9 +53,15 @@ function Registeration() {
         }
 
     }
+/**
+ * 
+ * @author Ambika Hadapad
+ * @description declared a function which will be called when user clicks on submit button.It checks whether user has filled all the input fields or not.
+ * If all the fields are filled. user will be redirected to the login page.
+ * @returns returns boolean value.
+ */
 
     const handleClick = (e) => {
-        // e.preventDefault();
         if (Fname !== " " && Lname !== " " && Uname !== " " && Email !== " " && Email !== " " && Pass !== " " && Conpass !== " ") {
             setLogin(!login);
             console.log(setLogin);
@@ -52,7 +72,12 @@ function Registeration() {
             alert("Please fill all the fields")
         }
     }
-
+/**
+ * 
+ * @author Ambika Hadapad
+ * @description Added all the input fields and called the methods whenever ochange event occurs.
+ * @returns 
+ */
 
     return (
         <div>
